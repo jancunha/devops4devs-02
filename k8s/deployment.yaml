@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: postgre
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: postgre
@@ -39,6 +40,7 @@ kind: Deployment
 metadata:
   name: reviewfilmes
 spec:
+  replicas: 10
   selector:
     matchLabels:
       app: reviewfilmes
