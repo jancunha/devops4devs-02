@@ -47,4 +47,5 @@ jobs:
         with:
           manifests: |
               ./k8s/deployment.yaml
-          images: 'jancunha/review-filmes:v${{ github.run_number }}'
+          images: |
+            'jancunha/review-filmes:v${{ github.run_number }}'
