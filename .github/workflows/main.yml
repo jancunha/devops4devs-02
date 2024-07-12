@@ -42,9 +42,9 @@ jobs:
       - name: Save DigitalOcean kubeconfig
         run: doctl kubernetes cluster kubeconfig save k8slab
       
-      - uses: Azure/k8s-deploy@v5
+      - name: Deploy to Kubernetes Cluster
+        uses: Azure/k8s-deploy@v5
         with:
-          namespace: 'myapp'
           manifests: |
               ./k8s/deployment.yaml
           images: 'jancunha/review-filmes:v${{ github.run_number }}'
