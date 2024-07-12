@@ -34,10 +34,17 @@ jobs:
       - name: Checkout do código fonte
         uses: actions/checkout@v4.1.7
       
-      - name: Digital Ocean Authentication
-        uses: jjst/action-digitalocean-deploy-app@v2
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Save DigitalOcean kubeconfig
+        run: doctl kubernetes cluster kubeconfig save k8slab
       
-      - name: Passo 01
-        run: echo "Deploy da aplicação"
+      - uses: Azure/k8s-deploy@v5
+        with:
+          namespace: 'myapp'
+          manifests: |
+              ./k8s/deployment.yaml
+          images: 'jancunha/review-filmes:v${{ github.run_number }}'

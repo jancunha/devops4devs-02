@@ -10,7 +10,7 @@ resource "digitalocean_kubernetes_cluster" "main" {
   }
 }
 
-resource "local_file" "kube_config" {
-  content  = digitalocean_kubernetes_cluster.main.kube_config.0.raw_config
-  filename = "kubeconfig.yaml"
-}
+# resource "local_file" "kube_config" {
+#   content  = digitalocean_kubernetes_cluster.main.kube_config.0.raw_config
+#   filename = "kubeconfig.yaml"
+# }

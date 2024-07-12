@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
       - name: reviewfilmes
-        image: jancunha/review-filmes:v1
+        image: jancunha/review-filmes:v${{ github.run_number }}
         env:
         - name: ASPNETCORE_HTTP_PORTS
           value: "8080"
