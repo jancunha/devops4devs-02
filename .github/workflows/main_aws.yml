@@ -27,22 +27,22 @@ jobs:
             jancunha/review-filmes:v${{ github.run_number }}
             jancunha/review-filmes:latest
   CD:
-  steps:
-    - name: Config AWS CLI
-      uses: aws-actions/configure-aws-credentials@v4.0.2
-      with:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Config AWS CLI
+        uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-    - name: Config Kubeconfig
-      run: aws eks update-kubeconfig --name k8slab
+      - name: Config Kubeconfig
+        run: aws eks update-kubeconfig --name k8slab
 
-    - name: Deploy Kubernetes
-      - uses: Azure/k8s-deploy@v5.0.0
+      - name: Deploy Kubernetes
+        uses: Azure/k8s-deploy@v5
         with:
-           manifests: |
+            manifests: |
               ./k8s/deployment.yaml
-           images: |
-             'jancunha/review-filmes:v${{ github.run_number }}'
+            images: |
+              'jancunha/review-filmes:v${{ github.run_number }}'
