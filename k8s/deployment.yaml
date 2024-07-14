@@ -55,7 +55,7 @@ spec:
     spec:
       containers:
       - name: reviewfilmes
-        image: jancunha/review-filmes:v3
+        image: jancunha/review-filmes:v4
         env:
         - name: ASPNETCORE_HTTP_PORTS
           value: "8080"
