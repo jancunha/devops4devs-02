@@ -1,7 +1,9 @@
-name: CI-CD
+name: CI-CD Argo
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - k8s/*
   workflow_dispatch:
 
 jobs:
