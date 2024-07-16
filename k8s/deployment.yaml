@@ -75,4 +75,22 @@ spec:
   - port: 80
     targetPort: 8080
     # nodePort: 30000
-  type: LoadBalancer # NodePort
+  # type: LoadBalancer # NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-host
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: filmes.192.168.1.200.nip.io
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: reviewfilmes
+            port: 
+              number: 80
