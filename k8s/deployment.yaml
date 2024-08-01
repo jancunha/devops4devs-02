@@ -84,7 +84,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: filmes.192.168.1.200.nip.io
+  - host: filmes.48.216.153.117.nip.io
     http:
       paths:
       - pathType: Prefix
